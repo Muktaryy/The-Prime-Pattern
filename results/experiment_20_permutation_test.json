@@ -1,0 +1,132 @@
+{
+  "experiment": 20,
+  "range": [
+    60001,
+    70000
+  ],
+  "blockCount": 1000,
+  "primeCount": 878,
+  "permutationsPerControl": 100000,
+  "phaseDefinition": "block index modulo 3; starts at 60001 ≡ 1 (mod 30)",
+  "observed": {
+    "windowed": {
+      "a": 227,
+      "x": 116,
+      "b": 733,
+      "y": 199,
+      "rateAfterPlusOne": 0.5110132158590308,
+      "rateOther": 0.27148703956343795,
+      "delta": 0.23952617629559286
+    },
+    "full": {
+      "a": 235,
+      "x": 121,
+      "b": 763,
+      "y": 209,
+      "rateAfterPlusOne": 0.5148936170212766,
+      "rateOther": 0.27391874180865006,
+      "delta": 0.2409748752126265
+    }
+  },
+  "results": [
+    {
+      "name": "20A_unrestricted_global",
+      "seed": 20261220,
+      "windowed": {
+        "mean": 0.2402627551132376,
+        "median": 0.24052824651504034,
+        "central95": [
+          0.17254679132875322,
+          0.30627867777881823
+        ],
+        "lowerExceedances": 48833,
+        "upperExceedances": 51172,
+        "lowerTailPlusOne": 0.4883351166488335,
+        "upperTailPlusOne": 0.5117248827511724,
+        "twoSidedEqualTailPlusOne": 0.976670233297667,
+        "simulations": 100000
+      },
+      "full": {
+        "mean": 0.24029141388400854,
+        "median": 0.24047378254683832,
+        "central95": [
+          0.17406552330694813,
+          0.3046218487394958
+        ],
+        "lowerExceedances": 50581,
+        "upperExceedances": 49425,
+        "lowerTailPlusOne": 0.5058149418505815,
+        "upperTailPlusOne": 0.4942550574494255,
+        "twoSidedEqualTailPlusOne": 0.988510114898851,
+        "simulations": 100000
+      },
+      "undefinedSimulations": 0
+    },
+    {
+      "name": "20B_global_phase_stratified",
+      "seed": 20261221,
+      "windowed": {
+        "mean": 0.2276265792870999,
+        "median": 0.22776228906823182,
+        "central95": [
+          0.1622720281256867,
+          0.29189175778851467
+        ],
+        "lowerExceedances": 64001,
+        "upperExceedances": 36008,
+        "lowerTailPlusOne": 0.6400135998640014,
+        "upperTailPlusOne": 0.36008639913600865,
+        "twoSidedEqualTailPlusOne": 0.7201727982720173,
+        "simulations": 100000
+      },
+      "full": {
+        "mean": 0.2276312140212305,
+        "median": 0.22782700138721085,
+        "central95": [
+          0.16379236915179357,
+          0.29049480094498376
+        ],
+        "lowerExceedances": 65984,
+        "upperExceedances": 34027,
+        "lowerTailPlusOne": 0.6598434015659843,
+        "upperTailPlusOne": 0.34027659723402764,
+        "twoSidedEqualTailPlusOne": 0.6805531944680553,
+        "simulations": 100000
+      },
+      "undefinedSimulations": 0
+    },
+    {
+      "name": "20C_within_window_phase_stratified",
+      "seed": 20261222,
+      "windowed": {
+        "mean": 0.23523714925144898,
+        "median": 0.23528857212889115,
+        "central95": [
+          0.171389751552795,
+          0.2981774252849414
+        ],
+        "lowerExceedances": 55166,
+        "upperExceedances": 44844,
+        "lowerTailPlusOne": 0.5516644833551665,
+        "upperTailPlusOne": 0.4484455155448446,
+        "twoSidedEqualTailPlusOne": 0.8968910310896892,
+        "simulations": 100000
+      },
+      "full": {
+        "mean": 0.2347935330484949,
+        "median": 0.2348165760869565,
+        "central95": [
+          0.1726122243110642,
+          0.29666835549188486
+        ],
+        "lowerExceedances": 57702,
+        "upperExceedances": 42313,
+        "lowerTailPlusOne": 0.5770242297577024,
+        "upperTailPlusOne": 0.42313576864231356,
+        "twoSidedEqualTailPlusOne": 0.8462715372846271,
+        "simulations": 100000
+      },
+      "undefinedSimulations": 0
+    }
+  ]
+}
