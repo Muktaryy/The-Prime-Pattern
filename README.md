@@ -442,3 +442,20 @@ Together, Experiments 17 and 18 show that the same finite-sieve baseline is cons
 Reproduction: `node analysis/finite_sieve_heldout_test_50001_60000.js`
 
 The 1,000 observed block counts are in [data/prime_counts_50001_60000_by_10.csv](data/prime_counts_50001_60000_by_10.csv).
+
+
+## Complete prime data archive (1-60,000)
+
+We now preserve the actual prime numbers as well as block counts. This archive was generated with a sieve of Eratosthenes and checked against the grouped totals.
+
+- [Complete list of all 6,057 primes from 1 through 60,000](data/prime_numbers_1_60000.csv): one prime per row.
+- [Prime membership and counts at three scales](data/prime_counts_and_members_by_scale_1_60000.csv): each row gives the block size, start, end, number of primes, and the exact prime numbers in that block.
+
+The grouped file contains:
+- **6,000** blocks of 10 integers;
+- **600** blocks of 100 integers;
+- **60** blocks of 1,000 integers.
+
+For each scale, the block counts sum to **6,057**, matching the complete prime catalog. This lets us study exact prime positions, local gaps, and counts at multiple scales without reconstructing the prime list from count-only files.
+
+Going forward, every new range should be archived in the same way: exact prime list plus block membership/counts at 10, 100, and 1,000.
