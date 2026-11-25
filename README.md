@@ -61,3 +61,33 @@ The initial project began with manually counting primes in groups of 10 and clus
 - Repeat with a larger range using the same fixed protocol.
 - Compare alternative null models, including shuffling within clusters and simulations that preserve local count distributions.
 - Avoid searching many patterns and reporting only the strongest one; define tests before examining new data.
+
+
+## Experiment 8: Does the order create unusually large changes?
+
+Question: compared with random rearrangements that preserve the counts within each 100-number cluster, does the actual ordering have unusually large neighbouring changes?
+
+### Predefined statistic
+
+For each cluster, calculate the absolute difference between each pair of neighbouring block counts, then sum across all 100 clusters. There are 900 adjacent pairs in total (9 per cluster). Cluster boundaries are never joined.
+
+### Verified result
+
+- Observed total absolute change: **955**
+- Mean over 200,000 within-cluster shuffles: **874.99594**
+- Median shuffled value: **875**
+- Central 95% of shuffled values: **839 to 911**
+- Shuffles with a value at least as large as observed: **2 of 200,000**
+- One-sided Monte Carlo estimate with +1 correction: **0.000015**
+
+The actual ordering therefore has substantially larger adjacent changes than almost all of the within-cluster random rearrangements in this simulation.
+
+### Interpretation and limitations
+
+This is evidence that the order of the block counts is not behaving like a uniformly random permutation conditional on the observed count frequencies within each cluster, under this particular test. It is not proof of a new prime-number law. The shuffle model is only one possible null model; it does not represent every plausible random process for prime counts. Also, this is an exploratory project with several analyses already tried, so the result should be treated as a lead for further testing, not as a confirmatory discovery. A stronger follow-up would define a new statistic in advance and test it on a separate, previously unused range of integers.
+
+### Reproduction
+
+Run: python analysis/order_test.py
+
+The script uses 200,000 independent within-cluster permutations and seed 20261126.
