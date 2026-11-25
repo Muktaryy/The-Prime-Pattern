@@ -153,3 +153,44 @@ The high adjacent variation remains when we preserve prime-count frequencies at 
 It still does not establish a new prime-number law. Both ranges were explored after the general pattern had already attracted our attention, and the statistic was developed from earlier exploratory work. The null model is also a particular randomization model, not a complete model of how primes behave. A stronger next step is to preregister the statistic, partition, and null model, then test on a genuinely untouched range.
 
 Reproduction: `python analysis/coarse_cluster_shuffle_test.py` (100,000 permutations per range; seeds 20261128 and 20261129).
+
+
+## Experiment 11: Pre-specified coarse-cluster test on a held-out range
+
+Before examining this range, we fixed the method to match Experiment 10:
+
+- Range: **20,001–30,000**, not used in the earlier experiments
+- Divide into 1,000 consecutive blocks of 10 integers
+- Divide those into ten clusters of 1,000 integers (100 block-counts per cluster)
+- Statistic: within each cluster, sum the absolute differences between adjacent block-counts; then sum across all ten clusters (990 adjacent pairs)
+- Null model: independently permute the 100 block-counts within each 1,000-number cluster, preserving each cluster's count distribution
+- Simulations: **100,000**, NumPy seed **20261130**
+- Tail: upper tail, because the pre-existing hypothesis predicts unusually large adjacent variation
+
+### Data
+
+- Prime numbers in 20,001–30,000: **983**
+- Data: [data/prime_counts_20001_30000_by_10.csv](data/prime_counts_20001_30000_by_10.csv)
+
+### Results
+
+- Observed total absolute change: **946**
+- Mean shuffled statistic: **859.05923**
+- Median shuffled statistic: **859**
+- Central 95% shuffled interval: **822 to 895**
+- Shuffles at least as large as observed: **0 / 100,000**
+- Plus-one Monte Carlo estimate: **0.000010**
+
+Zero exceedances does not mean the true probability is zero. At this simulation size, the plus-one estimate is the smallest reportable value; more simulations would be needed to estimate a smaller tail probability precisely.
+
+### Interpretation
+
+The held-out range has the same direction as the earlier coarse-cluster experiments: its observed adjacent variation exceeds all 100,000 simulated rearrangements under this specific null model. This is a useful out-of-sample replication of the pre-specified statistic and randomization scheme.
+
+It is not proof of a new prime-number law. The test only rejects (at the resolution of this simulation) the particular model that uniformly randomizes the 10-number block-counts within each fixed 1,000-number cluster. Other null models and mathematical explanations remain possible.
+
+### Reproduction
+
+Run: `python analysis/heldout_coarse_cluster_test.py`
+
+The script uses 100,000 within-cluster permutations and seed 20261130.
