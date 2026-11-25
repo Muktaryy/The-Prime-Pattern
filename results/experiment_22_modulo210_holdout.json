@@ -1,0 +1,112 @@
+{
+  "experiment": 22,
+  "range": [
+    70001,
+    80000
+  ],
+  "blockCount": 1000,
+  "primeCount": 902,
+  "firstPrime": 70001,
+  "lastPrime": 79999,
+  "permutationsPerControl": 100000,
+  "phaseDefinition": "block starting residue modulo 210: (70001 + 10*i) mod 210",
+  "phaseCount": 21,
+  "globalPhaseGroupSizes": {
+    "min": 47,
+    "max": 48,
+    "distribution": {
+      "47": 8,
+      "48": 13
+    }
+  },
+  "withinWindowPhaseGroupSizes": {
+    "min": 2,
+    "max": 3
+  },
+  "observed": {
+    "windowed": {
+      "a": 214,
+      "x": 101,
+      "b": 746,
+      "y": 230,
+      "rateAfterPlusOne": 0.4719626168224299,
+      "rateOther": 0.30831099195710454,
+      "delta": 0.16365162486532536
+    },
+    "full": {
+      "a": 220,
+      "x": 104,
+      "b": 778,
+      "y": 237,
+      "rateAfterPlusOne": 0.4727272727272727,
+      "rateOther": 0.3046272493573265,
+      "delta": 0.16810002336994623
+    }
+  },
+  "results": [
+    {
+      "name": "22A_global_modulo210_stratified",
+      "seed": 20261225,
+      "windowed": {
+        "mean": 0.21441834055085623,
+        "median": 0.2146657505777606,
+        "central95": [
+          0.14920634920634918,
+          0.2785969411118235
+        ],
+        "lowerExceedances": 6334,
+        "upperExceedances": 93667,
+        "lowerTailPlusOne": 0.06334936650633494,
+        "upperTailPlusOne": 0.9366706332936671,
+        "twoSidedEqualTailPlusOne": 0.12669873301266987,
+        "simulations": 100000
+      },
+      "full": {
+        "mean": 0.2143805661279014,
+        "median": 0.2145698924731183,
+        "central95": [
+          0.1505614632774902,
+          0.2772587805756012
+        ],
+        "lowerExceedances": 7676,
+        "upperExceedances": 92324,
+        "lowerTailPlusOne": 0.07676923230767692,
+        "upperTailPlusOne": 0.9232407675923241,
+        "twoSidedEqualTailPlusOne": 0.15353846461535384,
+        "simulations": 100000
+      }
+    },
+    {
+      "name": "22B_within_window_modulo210_stratified",
+      "seed": 20261226,
+      "windowed": {
+        "mean": 0.1857448837306229,
+        "median": 0.18579747004885888,
+        "central95": [
+          0.1297259840261889,
+          0.24087713424840979
+        ],
+        "lowerExceedances": 21643,
+        "upperExceedances": 78363,
+        "lowerTailPlusOne": 0.2164378356216438,
+        "upperTailPlusOne": 0.7836321636783632,
+        "twoSidedEqualTailPlusOne": 0.4328756712432876,
+        "simulations": 100000
+      },
+      "full": {
+        "mean": 0.18453862330176707,
+        "median": 0.18469514653522695,
+        "central95": [
+          0.12905378353129587,
+          0.239260303396429
+        ],
+        "lowerExceedances": 27775,
+        "upperExceedances": 72235,
+        "lowerTailPlusOne": 0.27775722242777573,
+        "upperTailPlusOne": 0.7223527764722353,
+        "twoSidedEqualTailPlusOne": 0.5555144448555515,
+        "simulations": 100000
+      }
+    }
+  ]
+}
