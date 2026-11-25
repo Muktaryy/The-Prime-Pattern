@@ -368,3 +368,50 @@ The observed prime total and adjacent-change statistic both lie comfortably with
 Run: `node analysis/heldout_smooth_density_test.js`
 
 The raw block counts are in [data/prime_counts_30001_40000_by_10.csv](data/prime_counts_30001_40000_by_10.csv).
+
+## Experiment 17: finite-sieve model with primes up to 31 (held-out range)
+
+### Question
+
+Does adjacent variation in prime counts remain unusual after the model accounts for divisibility by more small primes than the modulo-210 baseline?
+
+### Pre-specified model and test
+
+We used the previously untested range **40,001-50,000**. The model and statistic were fixed before running the simulation.
+
+1. Exclude every integer divisible by any prime up to 31: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, and 31.
+2. For every remaining integer n, independently declare it prime with probability C / ln(n), where C is the product over primes p <= 31 of p/(p-1) = **6.5422697091**.
+3. Count selected integers in aligned blocks of 10.
+4. Divide the range into twenty consecutive windows of 500 integers. Within each window, calculate the sum of absolute differences between adjacent block counts. The total has **980 adjacent pairs**.
+5. Run **100,000** simulations using Mulberry32 seed **20261214**. The primary test is the upper tail because the original question concerns unusually large adjacent variation.
+
+This is a finite-sieve, independent-residual model inspired by the logic of Cramér/Granville-style models. It is not the full Granville model or the Banks-Ford-Tao random-sieve model: after the small-prime exclusions, the remaining selections are independent. The factor C adjusts the approximate prime density conditional on surviving the finite sieve.
+
+### Results
+
+| Quantity | Result |
+|---|---:|
+| Actual prime count | **930** |
+| Model expected prime count | 935.68148 |
+| Simulated total-count mean | 935.62902 |
+| Simulated total-count central 95% interval | 898-973 |
+| Observed adjacent-change statistic | **890** |
+| Simulated statistic mean | 921.30984 |
+| Simulated statistic median | 921 |
+| Simulated statistic central 95% interval | 870-972 |
+| Simulations with statistic >= observed | 88,939 / 100,000 |
+| Upper-tail plus-one estimate | 0.8893911 |
+
+The observed total and adjacent-change statistic are both within the model's central 95% ranges. The observed variation is actually below the simulated mean, so this test gives no evidence of unusually large adjacent variation in this range under the specified model.
+
+### Interpretation and limitations
+
+Adding exclusions for primes 11 through 31 gives the model more of the local arithmetic structure of primes. On this held-out range, the observed adjacent variation is not unusually high. This is evidence that a simple finite-sieve baseline can reproduce the scale of this statistic here; it is not proof that the model captures all prime correlations.
+
+The model still treats surviving integers independently. It does not impose Hardy-Littlewood prime-tuple correlations or the dependence created by larger prime factors. The result is one test on one range, and it does not establish a new prime law.
+
+### Reproduction
+
+Run: node analysis/finite_sieve_heldout_test.js
+
+The 1,000 observed block counts are in [data/prime_counts_40001_50000_by_10.csv](data/prime_counts_40001_50000_by_10.csv).
