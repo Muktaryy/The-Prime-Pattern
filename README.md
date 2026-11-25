@@ -459,3 +459,8 @@ The grouped file contains:
 For each scale, the block counts sum to **6,057**, matching the complete prime catalog. This lets us study exact prime positions, local gaps, and counts at multiple scales without reconstructing the prime list from count-only files.
 
 Going forward, every new range should be archived in the same way: exact prime list plus block membership/counts at 10, 100, and 1,000.
+
+
+## Permanent data and research protocol
+
+The project's required data fields, experiment records, reproducibility standards, statistical safeguards, and recommended workflow are documented in [research/RESEARCH_PROTOCOL.md](research/RESEARCH_PROTOCOL.md). Follow this protocol for all new datasets and experiments.
