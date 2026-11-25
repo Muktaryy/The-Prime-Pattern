@@ -332,3 +332,39 @@ This suggests that the remaining variation can be consistent with a simple model
 Run: `node analysis/smooth_density_simulation.js`
 
 The script uses 100,000 simulations per range and fixed seeds 20261210–20261212.
+
+
+## Experiment 16: held-out smooth-density test (30,001–40,000)
+
+This range was held out from the earlier exploratory analyses. Before computing its result, we kept the Experiment 15 model, block size, window size, statistic, and upper-tail direction fixed.
+
+### Method
+
+- Range: 30,001–40,000; 1,000 aligned blocks of 10.
+- Windows: twenty consecutive windows of 500 integers (50 blocks each).
+- Statistic: sum of absolute differences between adjacent block counts within each 500-number window; 980 adjacent pairs, with no boundary joins.
+- Null model: each n > 7 coprime to 210 is independently selected with probability 210/(48 ln n); numbers not coprime to 210 are excluded; 2, 3, 5, and 7 are fixed primes.
+- Simulations: 100,000; Mulberry32 seed 20261213.
+
+### Results
+
+- Actual prime count: **958**
+- Model expected prime count: **955.81894**
+- Simulated total-count mean: **956.01641**
+- Simulated total-count central 95% interval: **911–1,002**
+- Observed adjacent-change statistic: **939**
+- Simulated statistic mean: **919.48705**
+- Median: **919**
+- Central 95% interval: **862–978**
+- Simulations at least as large as observed: **25,978 / 100,000**
+- Upper-tail plus-one estimate: **0.2597874**
+
+### Interpretation
+
+The observed prime total and adjacent-change statistic both lie comfortably within the simulated ranges. Under the fixed Experiment 15 baseline, this held-out range does not show unusually large adjacent variation. This is a useful out-of-sample check, but it does not prove that the simplified model is a complete description of prime behaviour.
+
+### Reproduction
+
+Run: `node analysis/heldout_smooth_density_test.js`
+
+The raw block counts are in [data/prime_counts_30001_40000_by_10.csv](data/prime_counts_30001_40000_by_10.csv).
