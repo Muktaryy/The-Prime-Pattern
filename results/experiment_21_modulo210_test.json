@@ -1,0 +1,110 @@
+{
+  "experiment": 21,
+  "range": [
+    60001,
+    70000
+  ],
+  "blockCount": 1000,
+  "primeCount": 878,
+  "permutationsPerControl": 100000,
+  "phaseDefinition": "block starting residue modulo 210: (60001 + 10*i) mod 210",
+  "phaseCount": 21,
+  "globalPhaseGroupSizes": {
+    "min": 47,
+    "max": 48,
+    "distribution": {
+      "47": 8,
+      "48": 13
+    }
+  },
+  "localPhaseGroupSizes": {
+    "min": 2,
+    "max": 3
+  },
+  "observed": {
+    "windowed": {
+      "a": 227,
+      "x": 116,
+      "b": 733,
+      "y": 199,
+      "rateAfterPlusOne": 0.5110132158590308,
+      "rateOther": 0.27148703956343795,
+      "delta": 0.23952617629559286
+    },
+    "full": {
+      "a": 235,
+      "x": 121,
+      "b": 763,
+      "y": 209,
+      "rateAfterPlusOne": 0.5148936170212766,
+      "rateOther": 0.27391874180865006,
+      "delta": 0.2409748752126265
+    }
+  },
+  "results": [
+    {
+      "name": "21A_global_modulo210_stratified",
+      "seed": 20261223,
+      "windowed": {
+        "mean": 0.22796259539985259,
+        "median": 0.22815802763597426,
+        "central95": [
+          0.1626552795031056,
+          0.2923235886198849
+        ],
+        "lowerExceedances": 63507,
+        "upperExceedances": 36508,
+        "lowerTailPlusOne": 0.6350736492635074,
+        "upperTailPlusOne": 0.3650863491365086,
+        "twoSidedEqualTailPlusOne": 0.7301726982730172,
+        "simulations": 100000
+      },
+      "full": {
+        "mean": 0.22794965822679875,
+        "median": 0.22809549380230004,
+        "central95": [
+          0.1641167169757079,
+          0.2908967391304348
+        ],
+        "lowerExceedances": 65409,
+        "upperExceedances": 34604,
+        "lowerTailPlusOne": 0.6540934590654094,
+        "upperTailPlusOne": 0.3460465395346047,
+        "twoSidedEqualTailPlusOne": 0.6920930790692094,
+        "simulations": 100000
+      }
+    },
+    {
+      "name": "21B_within_window_modulo210_stratified",
+      "seed": 20261224,
+      "windowed": {
+        "mean": 0.23016757263966342,
+        "median": 0.23027326887869753,
+        "central95": [
+          0.17601748724888105,
+          0.2835700637675821
+        ],
+        "lowerExceedances": 63160,
+        "upperExceedances": 36863,
+        "lowerTailPlusOne": 0.6316036839631604,
+        "upperTailPlusOne": 0.3686363136368636,
+        "twoSidedEqualTailPlusOne": 0.7372726272737272,
+        "simulations": 100000
+      },
+      "full": {
+        "mean": 0.22882360818339323,
+        "median": 0.22894613032227706,
+        "central95": [
+          0.176045132359323,
+          0.28089900362318837
+        ],
+        "lowerExceedances": 67328,
+        "upperExceedances": 32697,
+        "lowerTailPlusOne": 0.6732832671673283,
+        "upperTailPlusOne": 0.3269767302326977,
+        "twoSidedEqualTailPlusOne": 0.6539534604653954,
+        "simulations": 100000
+      }
+    }
+  ]
+}
