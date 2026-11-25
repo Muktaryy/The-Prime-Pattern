@@ -194,3 +194,41 @@ It is not proof of a new prime-number law. The test only rejects (at the resolut
 Run: `python analysis/heldout_coarse_cluster_test.py`
 
 The script uses 100,000 within-cluster permutations and seed 20261130.
+
+
+## Experiment 12: Preserve the modulo-30 phase
+
+### Why we changed the null model
+
+A block of ten consecutive integers does not have the same number of possible primes in every position modulo 30. Every prime greater than 5 must be coprime to 30.
+
+For blocks starting at residues 1, 11, and 21 modulo 30:
+- The block 1–10 (phase 1) contains only **two** numbers coprime to 30: 1 and 7 (and 1 is not prime).
+- The block 11–20 (phase 11) contains **four**: 11, 13, 17, 19.
+- The block 21–30 (phase 21) contains **two**: 23, 29.
+
+This 2–4–2 candidate pattern repeats every 30 integers. The earlier coarse shuffle tests mixed these different phases together, so their null model ignored a known arithmetic constraint. That makes their very small tail estimates misleading as evidence of unexplained prime structure.
+
+### Phase-preserving test
+
+We keep the same statistic: total absolute adjacent change within ten separate 1,000-number clusters (990 adjacent pairs per range). But now, inside each 1,000-number cluster, we only shuffle counts among positions with the same start modulo 30 (phases 1, 11, and 21). This preserves the obvious modulo-30 candidate pattern as well as each cluster's count distribution.
+
+We ran 100,000 simulations per range:
+
+| Range | Observed | Shuffle mean | Central 95% interval | Shuffles >= observed | +1 estimate |
+|---|---:|---:|---:|---:|---:|
+| 1–10,000 | **1,045** | 1,003.93 | 973–1,035 | 520 / 100,000 | 0.00521 |
+| 10,001–20,000 | **1,001** | 955.65 | 923–988 | 290 / 100,000 | 0.00291 |
+| 20,001–30,000 | **946** | 897.10 | 866–928 | 105 / 100,000 | 0.00106 |
+
+### Interpretation
+
+The phase effect explains an important part of the unusually large variation seen under the earlier coarse shuffles: blocks in the middle phase naturally have more prime candidates than the other two phases. Once we preserve this known modulo-30 structure, the observed statistic is much less extreme, although it remains above the 95% interval in all three ranges under this particular phase-preserving shuffle model.
+
+This is a more careful result, not a proof of a new prime law. The test still assumes exchangeability among same-phase positions within each 1,000-number cluster, which may not be a realistic complete model. We should investigate further modular effects (for example modulo 210) and smooth changes in prime density before drawing stronger conclusions.
+
+### Reproduction
+
+Run: `python analysis/phase_preserving_shuffle_test.py`
+
+The script uses 100,000 phase-preserving permutations per range and fixed seeds 20261201–20261203.
