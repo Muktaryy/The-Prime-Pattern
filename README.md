@@ -255,3 +255,38 @@ This is evidence that divisibility constraints involving 7, in addition to 2, 3,
 Run: `python analysis/modulo210_shuffle_test.py`
 
 The script uses 100,000 simulations per range, vectorized in batches, with fixed seeds 20261204–20261206.
+
+
+## Experiment 14: Smaller local windows with modulo-210 phase preserved
+
+### Question
+
+Does the remaining excess variation become less unusual when we preserve prime-count behaviour in smaller parts of the number line, rather than in 1,000-number clusters?
+
+### Method
+
+We divide each 10,000-number range into twenty consecutive windows of 500 integers (50 blocks of 10 per window). Within each window, block counts are shuffled only among positions whose starting integers have the same residue modulo 210. This preserves the candidate-position pattern from divisibility by 2, 3, 5, and 7, and preserves the observed count distribution within each 500-number window and phase.
+
+The statistic is the sum of absolute differences between adjacent block counts, calculated separately within each 500-number window. There are 20 × 49 = 980 adjacent pairs. No difference is counted across a 500-number window boundary.
+
+We ran 100,000 simulations per range. The reproducible JavaScript script uses the Mulberry32 pseudorandom generator with fixed seeds 20261207–20261209.
+
+### Results
+
+| Range | Primes | Observed statistic | Shuffle mean | Central 95% interval | Shuffles >= observed | +1 estimate |
+|---|---:|---:|---:|---:|---:|---:|
+| 1–10,000 | 1,229 | **1,033** | 1,004.34 | 980–1,029 | 1,151 / 100,000 | 0.01152 |
+| 10,001–20,000 | 1,033 | **991** | 965.39 | 939–992 | 2,990 / 100,000 | 0.02991 |
+| 20,001–30,000 | 983 | **937** | 899.36 | 877–922 | 55 / 100,000 | 0.00056 |
+
+### Interpretation
+
+The first two ranges are now much less unusual: about 1.15% and 2.99% of the shuffled arrangements reached or exceeded the observed statistic. In the second range, the observed value is inside the central 95% interval. The third range remains more unusual under this particular null model.
+
+This supports the idea that preserving more local structure helps explain some of the earlier excess variation. It does not establish a new prime-number law. The third range may reflect further local density changes, remaining arithmetic dependencies, or chance. These tests are exploratory, and the ranges have already been examined.
+
+### Reproduction
+
+Run: `node analysis/fine_window_modulo210_test.js`
+
+The script uses 100,000 simulations per range and seeds 20261207, 20261208, and 20261209.
