@@ -415,3 +415,30 @@ The model still treats surviving integers independently. It does not impose Hard
 Run: node analysis/finite_sieve_heldout_test.js
 
 The 1,000 observed block counts are in [data/prime_counts_40001_50000_by_10.csv](data/prime_counts_40001_50000_by_10.csv).
+
+## Experiment 18: fixed finite-sieve model, second held-out range (50,001-60,000)
+
+This is a direct repeat of Experiment 17, with only the range and seed changed. The model excludes multiples of primes up to 31, then independently selects each survivor n with probability C/ln(n), where C = product over primes p <= 31 of p/(p-1) = 6.5422697091. We use 1,000 aligned blocks of 10, twenty 500-integer windows, and the sum of absolute adjacent block-count differences within windows (980 pairs). The upper tail is the pre-specified primary direction. We ran 100,000 simulations with Mulberry32 seed 20261215. No model parameters or statistic definitions were changed after Experiment 17.
+
+### Results
+
+| Quantity | Result |
+|---|---:|
+| Actual prime count | **924** |
+| Model expected prime count | 920.76362 |
+| Simulated total-count mean | 920.71307 |
+| Simulated total-count central 95% interval | 883-958 |
+| Observed adjacent-change statistic | **892** |
+| Simulated statistic mean | 913.29502 |
+| Simulated statistic median | 913 |
+| Simulated statistic central 95% interval | 862-965 |
+| Simulations with statistic >= observed | 79,559 / 100,000 |
+| Upper-tail plus-one estimate | 0.7955920 |
+
+The observed prime total and adjacent-change statistic both lie inside the model's central 95% ranges. The observed adjacent variation is below the simulated mean. The upper-tail estimate is about 0.796, so this range gives no evidence of unusually large adjacent variation under the fixed model.
+
+Together, Experiments 17 and 18 show that the same finite-sieve baseline is consistent with the scale of this statistic in two consecutive held-out ranges. This is a limited check, not proof that the model captures all prime correlations or that the original pattern question is settled. The model still treats surviving integers independently and does not impose Hardy-Littlewood prime-tuple correlations.
+
+Reproduction: `node analysis/finite_sieve_heldout_test_50001_60000.js`
+
+The 1,000 observed block counts are in [data/prime_counts_50001_60000_by_10.csv](data/prime_counts_50001_60000_by_10.csv).
