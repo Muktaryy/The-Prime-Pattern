@@ -464,3 +464,16 @@ Going forward, every new range should be archived in the same way: exact prime l
 ## Permanent data and research protocol
 
 The project's required data fields, experiment records, reproducibility standards, statistical safeguards, and recommended workflow are documented in [research/RESEARCH_PROTOCOL.md](research/RESEARCH_PROTOCOL.md). Follow this protocol for all new datasets and experiments.
+
+
+## Derived prime-position, gap and residue archives (1–60,000)
+
+To support work beyond block counts, we generated reproducible derived tables from the complete prime list using a Sieve of Eratosthenes:
+
+- [Prime features and exact block offsets](data/prime_features_1_60000.csv): one row per prime, including prime index, preceding/following gaps, last digit, residues modulo 30 and 210, and offsets inside aligned blocks of 10, 100, and 1,000.
+- [Consecutive-prime gaps](data/prime_gaps_1_60000.csv): all 6,056 gaps between consecutive primes, including their midpoints.
+- [Residue-class counts](data/prime_residue_counts_1_60000.csv): observed counts by residue class modulo 30 and 210, excluding the small primes that divide those moduli.
+- [Reproducible generator](analysis/build_prime_archives.js): run `node analysis/build_prime_archives.js` from the repository root.
+- [Data audit](results/data_audit_1_60000.md): range, row counts, validation checks, and interpretation cautions.
+
+The generator independently finds **6,057 primes** from 1 through 60,000, with first prime 2, last prime 59,999, and **6,056 consecutive-prime gaps**. These tables are descriptive foundations; residue restrictions are known arithmetic facts, not a discovery claim.
