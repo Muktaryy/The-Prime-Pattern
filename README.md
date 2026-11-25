@@ -198,37 +198,60 @@ The script uses 100,000 within-cluster permutations and seed 20261130.
 
 ## Experiment 12: Preserve the modulo-30 phase
 
-### Why we changed the null model
+### Why this null model?
 
-A block of ten consecutive integers does not have the same number of possible primes in every position modulo 30. Every prime greater than 5 must be coprime to 30.
+Every prime greater than 5 must be coprime to 30. Therefore, 10-number blocks starting at residues 1, 11, and 21 modulo 30 have different candidate-position patterns. The earlier coarse shuffle tests mixed these phases together and did not preserve this known arithmetic structure.
 
-For blocks starting at residues 1, 11, and 21 modulo 30:
-- The block 1–10 (phase 1) contains only **two** numbers coprime to 30: 1 and 7 (and 1 is not prime).
-- The block 11–20 (phase 11) contains **four**: 11, 13, 17, 19.
-- The block 21–30 (phase 21) contains **two**: 23, 29.
+### Corrected phase-preserving test
 
-This 2–4–2 candidate pattern repeats every 30 integers. The earlier coarse shuffle tests mixed these different phases together, so their null model ignored a known arithmetic constraint. That makes their very small tail estimates misleading as evidence of unexplained prime structure.
-
-### Phase-preserving test
-
-We keep the same statistic: total absolute adjacent change within ten separate 1,000-number clusters (990 adjacent pairs per range). But now, inside each 1,000-number cluster, we only shuffle counts among positions with the same start modulo 30 (phases 1, 11, and 21). This preserves the obvious modulo-30 candidate pattern as well as each cluster's count distribution.
-
-We ran 100,000 simulations per range:
+Within each 1,000-number cluster, counts are shuffled only among blocks whose starting integers have the same residue modulo 30. The phase groups are recalculated separately in every cluster because 1,000 is not divisible by 30. The statistic is the total absolute adjacent change within the ten clusters (990 adjacent pairs).
 
 | Range | Observed | Shuffle mean | Central 95% interval | Shuffles >= observed | +1 estimate |
 |---|---:|---:|---:|---:|---:|
-| 1–10,000 | **1,045** | 1,003.93 | 973–1,035 | 520 / 100,000 | 0.00521 |
-| 10,001–20,000 | **1,001** | 955.65 | 923–988 | 290 / 100,000 | 0.00291 |
-| 20,001–30,000 | **946** | 897.10 | 866–928 | 105 / 100,000 | 0.00106 |
+| 1–10,000 | **1,045** | 1,003.87 | 973–1,035 | 474 / 100,000 | 0.00475 |
+| 10,001–20,000 | **1,001** | 955.76 | 923–988 | 314 / 100,000 | 0.00315 |
+| 20,001–30,000 | **946** | 897.11 | 866–928 | 93 / 100,000 | 0.00094 |
 
 ### Interpretation
 
-The phase effect explains an important part of the unusually large variation seen under the earlier coarse shuffles: blocks in the middle phase naturally have more prime candidates than the other two phases. Once we preserve this known modulo-30 structure, the observed statistic is much less extreme, although it remains above the 95% interval in all three ranges under this particular phase-preserving shuffle model.
-
-This is a more careful result, not a proof of a new prime law. The test still assumes exchangeability among same-phase positions within each 1,000-number cluster, which may not be a realistic complete model. We should investigate further modular effects (for example modulo 210) and smooth changes in prime density before drawing stronger conclusions.
+Preserving modulo-30 phase explains part of the effect seen under the earlier coarse shuffles. The observed statistic remains above the 95% interval in all three ranges under this particular null model, but that is not proof of a new prime-number law. The test still assumes that block counts are exchangeable among same-phase positions within each 1,000-number cluster.
 
 ### Reproduction
 
 Run: `python analysis/phase_preserving_shuffle_test.py`
 
-The script uses 100,000 phase-preserving permutations per range and fixed seeds 20261201–20261203.
+The corrected script uses 100,000 simulations per range and seeds 20261201–20261203. It recalculates the phase positions in each cluster.
+
+## Experiment 13: Preserve the modulo-210 phase
+
+### Why test modulo 210?
+
+Every prime greater than 7 must be coprime to 210, because 210 = 2 × 3 × 5 × 7. A 10-number block's possible prime positions therefore depend on its starting residue modulo 210. Since 1,000 is not divisible by 210, the phase pattern shifts from one 1,000-number cluster to the next.
+
+### Method
+
+We keep the same statistic: sum the absolute differences between adjacent 10-number block counts, separately within each of ten 1,000-number clusters (990 adjacent pairs total).
+
+For each cluster, we shuffle counts only among blocks with the same starting residue modulo 210. This preserves the position pattern imposed by divisibility by 2, 3, 5, and 7, while also preserving the observed count distribution within each phase group and cluster.
+
+We ran 100,000 simulations for each range, using fixed seeds 20261204–20261206.
+
+### Results
+
+| Range | Primes | Observed | Shuffle mean | Central 95% interval | Shuffles >= observed | +1 estimate |
+|---|---:|---:|---:|---:|---:|---:|
+| 1–10,000 | 1,229 | **1,045** | 1,015.44 | 988–1,042 | 1,734 / 100,000 | 0.01735 |
+| 10,001–20,000 | 1,033 | **1,001** | 969.77 | 940–1,000 | 2,138 / 100,000 | 0.02139 |
+| 20,001–30,000 | 983 | **946** | 902.83 | 876–930 | 87 / 100,000 | 0.00088 |
+
+### Interpretation
+
+Preserving modulo 210 raises the shuffle means and makes the first two ranges much less unusual than they appeared under the modulo-30 model. In the first two ranges, about 1.7% and 2.1% of the simulated arrangements reached or exceeded the observed statistic. The third range remains more unusual under this particular test.
+
+This is evidence that divisibility constraints involving 7, in addition to 2, 3, and 5, explain more of the earlier variation. It does not show that the remaining variation is a new prime pattern. The model still assumes exchangeability among same-phase blocks within each 1,000-number cluster; gradual changes in prime density and other arithmetic dependencies are not fully modelled. Also, these ranges have already been explored, so the results are exploratory rather than a fresh confirmatory test.
+
+### Reproduction
+
+Run: `python analysis/modulo210_shuffle_test.py`
+
+The script uses 100,000 simulations per range, vectorized in batches, with fixed seeds 20261204–20261206.
