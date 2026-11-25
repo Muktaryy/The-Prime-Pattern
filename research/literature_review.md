@@ -87,3 +87,43 @@ Range: 30,001–40,000. There are 958 primes. The fixed Experiment 15 model expe
 Interpretation: this held-out range is consistent with the fixed simplified model. It does not support an unusually large adjacent-change effect. This is evidence about this statistic and this baseline only, not a proof that the model describes primes in general.
 
 Reproduction: node analysis/heldout_smooth_density_test.js
+
+
+## Recent overview and further reading (checked November 2026)
+
+### Will Sawin, "Probabilistic Models in Number Theory" (ICM 2026)
+
+A recent invited lecture gives a broad overview of probabilistic models in number theory. It emphasizes that the difficult part is choosing the right distribution: a model can accurately predict some properties and fail on others. It explicitly discusses Cramér, Granville, Maier, and random-matrix models for zeta zeros.
+
+https://doi.org/10.1137/25M1806132
+
+### Pandey and Woo, "Small-scale distribution of linear patterns of primes" (2024)
+
+This paper proves analogues of Maier-type irregularity results for certain systems of linear prime patterns. It shows that local equidistribution can fail on small scales, even when a global asymptotic formula is known. It is not the same statistic as our ten-integer block-count variation, but it confirms that local-scale prime irregularities are an active and technically sophisticated research area.
+
+https://doi.org/10.1112/jlms.13001
+
+### Granville, "Harald Cramér and the distribution of prime numbers" (1995)
+
+An influential expository account of how Cramér's model shaped later research and why sieve corrections matter.
+
+https://doi.org/10.1080/03461238.1995.10413946
+
+### Short-interval variance and pair correlation
+
+The variance of prime counts in short intervals is connected to pair-correlation questions for zeta zeros. This is closer to a rigorous mathematical framework for fluctuation statistics than a single finite-range shuffle test.
+
+https://doi.org/10.1112/jlms/jdw030
+
+## What this means for our project
+
+Our current Experiment 15/16 baseline is a finite-sieve independent model: it removes multiples of 2, 3, 5, and 7, then independently selects each surviving number with probability 210/(48 log n). This is a useful teaching and diagnostic baseline, but it is not the full Granville model, not the Banks–Ford–Tao random sieve model, and not the Hardy–Littlewood singular-series model. Those distinctions must remain explicit.
+
+A possible original contribution would not be "discovering that primes fluctuate." That is established. A defensible contribution would require all of the following:
+- a precisely defined statistic for the block-count sequence;
+- a mathematical derivation of its expected behaviour under a recognized prime model;
+- comparison with the actual primes over large, independently selected ranges;
+- an effect that survives appropriate sieve/local-factor corrections and multiple-testing controls;
+- an explanation or proof, not merely a small simulated p-value.
+
+At present, no such residual effect has been established.
