@@ -91,3 +91,39 @@ This is evidence that the order of the block counts is not behaving like a unifo
 Run: python analysis/order_test.py
 
 The script uses 200,000 independent within-cluster permutations and seed 20261126.
+
+
+## Experiment 9: Independent range test (10,001–20,000)
+
+This range was not used to select the Experiment 8 statistic. We applied the same pre-defined statistic and the same within-cluster shuffle method to the next 10,000 integers.
+
+### Data
+
+- Range: 10,001–20,000
+- Prime numbers: **1,033**
+- Groups of 10: **1,000**
+- Clusters of 100: **100**
+- Raw counts: [data/prime_counts_10001_20000_by_10.csv](data/prime_counts_10001_20000_by_10.csv)
+
+### Statistic and shuffle test
+
+For each 100-number cluster, sum the absolute differences between its 9 adjacent pairs of block counts. Sum over all 100 clusters (900 adjacent pairs total). Shuffle the 10 block counts independently within each cluster, preserving the cluster's frequency of 0, 1, 2, 3 and 4.
+
+- Observed total absolute change: **906**
+- Mean of 100,000 shuffled totals: **842.19166**
+- Median shuffled total: **842**
+- Central 95% shuffled interval: **807 to 877**
+- Shuffles at least as large as observed: **15 / 100,000**
+- One-sided Monte Carlo estimate with +1 correction: **0.000160**
+
+### Interpretation
+
+The new, non-overlapping range shows the same direction as Experiment 8: the actual ordering has a larger total adjacent absolute change than nearly all within-cluster shuffled arrangements. This is a useful replication under the same conditional shuffle model.
+
+It is not proof of a new prime-number law. The shuffle model tests one specific null hypothesis (uniform random ordering within each 100-number cluster while holding that cluster's counts fixed). The statistic and method were selected after earlier exploratory work, so the two experiments should not be treated as fully independent confirmatory evidence. A future confirmatory test should be specified before examining a further unused range, and should consider alternative null models.
+
+### Reproduction
+
+Run: python analysis/independent_range_test.py
+
+The script uses 100,000 within-cluster permutations and NumPy seed 20261127.
