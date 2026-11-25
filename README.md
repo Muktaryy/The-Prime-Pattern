@@ -127,3 +127,29 @@ It is not proof of a new prime-number law. The shuffle model tests one specific 
 Run: python analysis/independent_range_test.py
 
 The script uses 100,000 within-cluster permutations and NumPy seed 20261127.
+
+
+## Experiment 10: Coarse-cluster shuffle test
+
+### Why this alternative model?
+
+The earlier experiments shuffled counts within 100-number clusters. That preserves very local prime-count frequencies. Here we use a broader null model: independently shuffle the 100 block-counts within each 1,000-number cluster. This preserves the total number of primes and the distribution of block counts in each 1,000-number region, while allowing the order within that wider region to change.
+
+For each 1,000-number cluster, calculate the sum of absolute differences between adjacent block counts (99 adjacent pairs). Sum across the 10 clusters, for 990 adjacent pairs total. Compare the observed statistic with 100,000 shuffled arrangements.
+
+### Results
+
+| Range | Primes | Observed statistic | Shuffle mean | Central 95% interval | Shuffles >= observed |
+|---|---:|---:|---:|---:|---:|
+| 1–10,000 | 1,229 | **1,045** | 940.80511 | 901–980 | 0 / 100,000 |
+| 10,001–20,000 | 1,033 | **1,001** | 907.48098 | 868–945 | 0 / 100,000 |
+
+No simulated shuffle reached the observed statistic in either range. With the standard plus-one correction, the Monte Carlo estimate is 1/100,001 (about 0.000010) for each range. Since there were zero exceedances, this is a simulation-resolution estimate, not a precise measurement of the true tail probability; the data are consistent with a small tail probability, but more simulations would be needed to estimate it more precisely.
+
+### Interpretation and limitations
+
+The high adjacent variation remains when we preserve prime-count frequencies at the broader 1,000-number scale rather than the 100-number scale. This makes the finding less dependent on the original, narrower shuffle choice.
+
+It still does not establish a new prime-number law. Both ranges were explored after the general pattern had already attracted our attention, and the statistic was developed from earlier exploratory work. The null model is also a particular randomization model, not a complete model of how primes behave. A stronger next step is to preregister the statistic, partition, and null model, then test on a genuinely untouched range.
+
+Reproduction: `python analysis/coarse_cluster_shuffle_test.py` (100,000 permutations per range; seeds 20261128 and 20261129).
