@@ -1,0 +1,50 @@
+{
+  "experiment": 19,
+  "range": [
+    60001,
+    70000
+  ],
+  "actualPrimeCount": 878,
+  "blockCount": 1000,
+  "windowCount": 20,
+  "blocksPerWindow": 50,
+  "transitionPairs": 960,
+  "observed": {
+    "a": 227,
+    "x": 116,
+    "b": 733,
+    "y": 199,
+    "rateAfterPlusOne": 0.5110132158590308,
+    "rateOther": 0.27148703956343795,
+    "delta": 0.23952617629559286
+  },
+  "model": {
+    "smallPrimes": [
+      2,
+      3,
+      5,
+      7,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29,
+      31
+    ],
+    "C": 6.542269709080825,
+    "mean": 0.2209931058602356,
+    "median": 0.22107251104405073,
+    "central95": [
+      0.15421309651752552,
+      0.286409064186842
+    ],
+    "exceedances": 29262,
+    "simulations": 100000,
+    "undefinedSimulations": 0,
+    "upperTailPlusOne": 0.2926270737292627,
+    "seed": 20261216,
+    "generator": "Mulberry32"
+  },
+  "interpretation": "Observed statistic is not in the upper 5% tail of this specified finite-sieve model."
+}
