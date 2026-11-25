@@ -290,3 +290,45 @@ This supports the idea that preserving more local structure helps explain some o
 Run: `node analysis/fine_window_modulo210_test.js`
 
 The script uses 100,000 simulations per range and seeds 20261207, 20261208, and 20261209.
+
+
+## Experiment 15: Smooth prime-density simulation
+
+### Question
+
+Can the remaining excess adjacent variation be explained by the ordinary decline in prime density as numbers get larger, once the modulo-210 candidate restriction is included?
+
+### Null model
+
+For every integer n greater than 7:
+- If gcd(n, 210) > 1, it is excluded as a candidate.
+- If gcd(n, 210) = 1, it is independently declared prime with probability 210 / (48 ln(n)).
+- The four primes 2, 3, 5, and 7 are included as fixed primes.
+
+Here 48 is Euler's totient phi(210), the number of residue classes coprime to 210. The factor 210/48 adjusts the usual 1/ln(n) prime-density approximation to apply only to numbers coprime to 210.
+
+For each simulated range, we count primes in aligned blocks of 10 and calculate the sum of absolute differences between adjacent block counts within twenty separate 500-number windows (980 adjacent pairs). We compare this with 100,000 simulations.
+
+This is a deliberately simple probabilistic model: it includes the smooth density decline and the modulo-210 candidate restriction, but treats eligible integers as independent. Actual primes have additional arithmetic dependencies, so this is a baseline rather than a complete model of primes.
+
+### Results
+
+| Range | Actual prime count | Model expected count | Observed statistic | Simulated statistic mean | Central 95% interval | Simulations >= observed |
+|---|---:|---:|---:|---:|---:|---:|
+| 1–10,000 | 1,229 | 1,245.94 | **1,033** | 1,014.79 | 954–1,075 | 28,366 / 100,000 |
+| 10,001–20,000 | 1,033 | 1,043.07 | **991** | 954.39 | 895–1,014 | 11,719 / 100,000 |
+| 20,001–30,000 | 983 | 987.97 | **937** | 932.16 | 874–991 | 44,035 / 100,000 |
+
+Upper-tail plus-one Monte Carlo estimates are approximately 0.28367, 0.11720, and 0.44036, respectively.
+
+### Interpretation
+
+All three observed statistics fall inside the central 95% intervals from this smooth-density simulation. Under this baseline, none of the three ranges has unusually large adjacent variation. In particular, the 20,001–30,000 range that stood out under the earlier conditional shuffle tests is not unusual under this model.
+
+This suggests that the remaining variation can be consistent with a simple model combining the modulo-210 restriction and the gradual decline in prime density. It does not prove that this model fully explains prime distribution: the simulation assumes independence among candidate integers, which is not true of actual primes. The model also uses an approximation to prime probability, not an exact theorem.
+
+### Reproduction
+
+Run: `node analysis/smooth_density_simulation.js`
+
+The script uses 100,000 simulations per range and fixed seeds 20261210–20261212.
