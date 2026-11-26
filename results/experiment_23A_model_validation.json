@@ -1,0 +1,74 @@
+{
+  "experiment": "23A aligned finite random-sieve validation",
+  "seed": 20261126,
+  "minimum_range_start": 1000000,
+  "blocks_per_run": 8,
+  "cutoff_z": 31,
+  "theta_z": 0.15285215138898609,
+  "replicates_per_block_length": 200000,
+  "results": [
+    {
+      "b": 10,
+      "range_start": 1000001,
+      "phi": 4,
+      "Q": 2.5,
+      "active_slots": 4,
+      "thinning_probability_at_1e6": 0.4735452722960991,
+      "max_absolute_block_mean_error": 0.0022497927359594883,
+      "max_mean_standardized_error": 1.3263568030622253,
+      "max_absolute_block_variance_error": 0.004232642956497057,
+      "lag_covariances": [
+        {"lag": 1, "empirical_average": -0.055426190903571405, "exact_model_average": -0.0551557852688364, "absolute_error": 0.000270405634735, "batch_mc_se": 0.00044357834637007176, "z_score": -0.6096006194797571},
+        {"lag": 2, "empirical_average": -0.0371487110208333, "exact_model_average": -0.03649716945575923, "absolute_error": 0.0006515415650740671, "batch_mc_se": 0.0005014707270041107, "z_score": -1.2992614124587345},
+        {"lag": 3, "empirical_average": 0.050291504885000046, "exact_model_average": 0.049909926209680634, "absolute_error": 0.00038157867531941615, "batch_mc_se": 0.000626222061588613, "z_score": 0.6093344497500062}
+      ],
+      "pair_checks": [
+        {"n": 1000001, "m": 1000013, "d": 12, "empirical_joint_frequency": 0.045705, "exact_probability": 0.0464123565267802, "mc_se": 0.000470416037611449, "z_score": -1.5036828471491286},
+        {"n": 1000001, "m": 1000021, "d": 20, "empirical_joint_frequency": 0.022895, "exact_probability": 0.023206164825885407, "mc_se": 0.00033665738325454293, "z_score": -0.9242774445559674},
+        {"n": 1000031, "m": 1000033, "d": 2, "empirical_joint_frequency": 0.02319, "exact_probability": 0.023206094279275537, "mc_se": 0.0003366568836930036, "z_score": -0.04780617909543257}
+      ]
+    },
+    {
+      "b": 30,
+      "range_start": 1000021,
+      "phi": 8,
+      "Q": 3.75,
+      "active_slots": 8,
+      "thinning_probability_at_1e6": 0.4735452722960991,
+      "max_absolute_block_mean_error": 0.006631379248503322,
+      "max_mean_standardized_error": 2.501658325310404,
+      "max_absolute_block_variance_error": 0.00825964871667817,
+      "lag_covariances": [
+        {"lag": 1, "empirical_average": -0.06489097700357112, "exact_model_average": -0.06446375140755664, "absolute_error": 0.0004272255960144752, "batch_mc_se": 0.001306187035463782, "z_score": -0.327078423238816},
+        {"lag": 2, "empirical_average": -0.0028952272541663917, "exact_model_average": -0.0029717179284561392, "absolute_error": 0.00007649067428974754, "batch_mc_se": 0.0012398711507716988, "z_score": 0.06169243815548056},
+        {"lag": 3, "empirical_average": -0.05422093272999966, "exact_model_average": -0.05672195982141326, "absolute_error": 0.002501027091413599, "batch_mc_se": 0.0014254160417929375, "z_score": 1.7545944609040065}
+      ],
+      "pair_checks": [
+        {"n": 1000021, "m": 1000057, "d": 36, "empirical_joint_frequency": 0.06908, "exact_probability": 0.06961821229434244, "mc_se": 0.0005690848654255458, "z_score": -0.9457504970545569},
+        {"n": 1000021, "m": 1000081, "d": 60, "empirical_joint_frequency": 0.068475, "exact_probability": 0.06961809136417388, "mc_se": 0.0005690844081460299, "z_score": -2.008649943332416},
+        {"n": 1000111, "m": 1000117, "d": 6, "empirical_joint_frequency": 0.06979, "exact_probability": 0.06961745648861127, "mc_se": 0.0005690820074500141, "z_score": 0.30319621623934345}
+      ]
+    },
+    {
+      "b": 210,
+      "range_start": 1000021,
+      "phi": 48,
+      "Q": 4.375,
+      "active_slots": 48,
+      "thinning_probability_at_1e6": 0.4735452722960991,
+      "max_absolute_block_mean_error": 0.013791639085450669,
+      "max_mean_standardized_error": 2.0746204889123585,
+      "max_absolute_block_variance_error": 0.051853643677628014,
+      "lag_covariances": [
+        {"lag": 1, "empirical_average": -0.2865839617750022, "exact_model_average": -0.28361413561832166, "absolute_error": 0.0029698261566805583, "batch_mc_se": 0.007813931376636378, "z_score": -0.38006811341603713},
+        {"lag": 2, "empirical_average": -0.02494932093333091, "exact_model_average": -0.03337038879053191, "absolute_error": 0.008421067857201, "batch_mc_se": 0.008828134813142225, "z_score": 0.9538898119979735},
+        {"lag": 3, "empirical_average": -0.04436622967999711, "exact_model_average": -0.04666811414845731, "absolute_error": 0.002301884468460208, "batch_mc_se": 0.008824577029515675, "z_score": 0.2608492691220285}
+      ],
+      "pair_checks": [
+        {"n": 1000021, "m": 1000241, "d": 220, "empirical_joint_frequency": 0.107915, "exact_probability": 0.10829355483013141, "mc_se": 0.0006948599168623297, "z_score": -0.5447930164698406},
+        {"n": 1000021, "m": 1000441, "d": 420, "empirical_joint_frequency": 0.097545, "exact_probability": 0.09746278893429237, "mc_se": 0.0006631884864329369, "z_score": 0.12396334886604797},
+        {"n": 1000651, "m": 1000661, "d": 10, "empirical_joint_frequency": 0.09751, "exact_probability": 0.09745679523268785, "mc_se": 0.0006631702959861133, "z_score": 0.08022791074053115}
+      ]
+    }
+  ]
+}
