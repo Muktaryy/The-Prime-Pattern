@@ -105,3 +105,15 @@ The C++ simulation was compiled with g++ -O3 -std=c++17. It used std::mt19937_64
 ## 7. Independent audit
 
 The independent review is saved at research/gemini_audit_experiment_23B_review.md. It accepts the marginal and pair probability derivations and the per-b simulation mechanics, but requires withdrawal of the original global p-value, explicit reporting of the covariance-cancellation limitation, and narrower power claims.
+
+
+## 8. Corrected implementation status
+
+On 2026-11-26 the C++ source was revised after the independent audit. The revised implementation:
+- asserts the interval alignment, active-offset count, prime count/endpoints, block totals, pair-difference bounds, and thinning-probability bounds;
+- computes the analytic expected raw residual cross-product average directly;
+- compares the observed and simulated raw cross-product averages against that exact analytic expectation;
+- reports the simulated-mean diagnostic in Monte Carlo standard-error units;
+- uses nine marginal Monte Carlo p-values with Bonferroni adjustment and reports no joint maximum-statistic p-value.
+
+**The revised source has been committed, but it has not yet been recompiled and rerun in this execution environment.** Therefore the numerical results above remain the original run's per-b descriptive comparisons; they are not results from the corrected calibration. The original global p-value remains withdrawn. Do not treat the corrected p-values or covariance diagnostics as available until the revised source is executed and its new JSON output is archived.
