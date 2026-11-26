@@ -1,0 +1,171 @@
+{
+  "experiment": "24",
+  "interval": {
+    "start_inclusive": 200341,
+    "end_exclusive": 300511,
+    "length": 100170
+  },
+  "prime_validation": {
+    "count": 8027,
+    "first": 200341,
+    "last": 300499,
+    "independent_segmented_sieve_confirmed": true
+  },
+  "alignment": {
+    "start_mod_210": 1,
+    "length_in_blocks_of_210": 477,
+    "block_counts": {
+      "10": 10017,
+      "30": 3339,
+      "210": 477
+    }
+  },
+  "cutoff": {
+    "z": 613,
+    "theta": 0.0869350007731856,
+    "theta_log_X": 1.06128303283538
+  },
+  "replicates_per_b": 5000,
+  "seeds": {
+    "10": 2026112710,
+    "30": 2026112730,
+    "210": 2026112810
+  },
+  "global_calibration": {
+    "method": "Bonferroni on nine marginal Monte Carlo tests",
+    "minimum_marginal_p": 0.0901819636072786,
+    "adjusted_p": 0.811637672465507,
+    "joint_max_p_value": null
+  },
+  "results": [
+    {
+      "b": 10,
+      "blocks": 10017,
+      "lags": [
+        {
+          "lag": 1,
+          "analytic_expected_raw_cross_product": -0.071790808256663,
+          "observed_raw_cross_product": -0.0658126603091211,
+          "simulation_mean_raw_cross_product": -0.0717765969595429,
+          "simulation_sd": 0.00462727035773888,
+          "simulation_mean_diagnostic_z": 0.21716700746235,
+          "observed_z_against_exact_mean": 1.29193833196796,
+          "two_sided_exceedances": 968,
+          "marginal_p_plus_one": 0.19376124775045
+        },
+        {
+          "lag": 2,
+          "analytic_expected_raw_cross_product": -0.0488550632884689,
+          "observed_raw_cross_product": -0.0481297869191933,
+          "simulation_mean_raw_cross_product": -0.0488436871361852,
+          "simulation_sd": 0.00467432485125532,
+          "simulation_mean_diagnostic_z": 0.172092327332575,
+          "observed_z_against_exact_mean": 0.155161738294859,
+          "two_sided_exceedances": 4361,
+          "marginal_p_plus_one": 0.872225554889022
+        },
+        {
+          "lag": 3,
+          "analytic_expected_raw_cross_product": 0.0573590922172243,
+          "observed_raw_cross_product": 0.0553167933186763,
+          "simulation_mean_raw_cross_product": 0.0573590987774692,
+          "simulation_sd": 0.00555712456916216,
+          "simulation_mean_diagnostic_z": 0.0000834747106915,
+          "observed_z_against_exact_mean": -0.3675100086619,
+          "two_sided_exceedances": 3598,
+          "marginal_p_plus_one": 0.719656068786243
+        }
+      ]
+    },
+    {
+      "b": 30,
+      "blocks": 3339,
+      "lags": [
+        {
+          "lag": 1,
+          "analytic_expected_raw_cross_product": -0.115166792085948,
+          "observed_raw_cross_product": -0.108799620740767,
+          "simulation_mean_raw_cross_product": -0.114936897898101,
+          "simulation_sd": 0.022163395201926,
+          "simulation_mean_diagnostic_z": 0.733460454505501,
+          "observed_z_against_exact_mean": 0.28728321122152,
+          "two_sided_exceedances": 3895,
+          "marginal_p_plus_one": 0.779044191161768
+        },
+        {
+          "lag": 2,
+          "analytic_expected_raw_cross_product": -0.0351893030429785,
+          "observed_raw_cross_product": -0.0432335510117694,
+          "simulation_mean_raw_cross_product": -0.0349901254126022,
+          "simulation_sd": 0.0230122137618428,
+          "simulation_mean_diagnostic_z": 0.612022183338553,
+          "observed_z_against_exact_mean": -0.34956428147427,
+          "two_sided_exceedances": 3679,
+          "marginal_p_plus_one": 0.735852829434113
+        },
+        {
+          "lag": 3,
+          "analytic_expected_raw_cross_product": -0.07761856376991,
+          "observed_raw_cross_product": -0.0392890042916163,
+          "simulation_mean_raw_cross_product": -0.0777864549829395,
+          "simulation_sd": 0.0224317069387759,
+          "simulation_mean_diagnostic_z": -0.529237545581377,
+          "observed_z_against_exact_mean": 1.70872237154795,
+          "two_sided_exceedances": 450,
+          "marginal_p_plus_one": 0.0901819636072786
+        }
+      ]
+    },
+    {
+      "b": 210,
+      "blocks": 477,
+      "lags": [
+        {
+          "lag": 1,
+          "analytic_expected_raw_cross_product": -0.917006160583131,
+          "observed_raw_cross_product": -0.503180695862156,
+          "simulation_mean_raw_cross_product": -0.911946641105785,
+          "simulation_sd": 0.347445441280564,
+          "simulation_mean_diagnostic_z": 1.02969275371444,
+          "observed_z_against_exact_mean": 1.19105164596708,
+          "two_sided_exceedances": 1179,
+          "marginal_p_plus_one": 0.235952809438112
+        },
+        {
+          "lag": 2,
+          "analytic_expected_raw_cross_product": -0.245919220617811,
+          "observed_raw_cross_product": -0.660326626649485,
+          "simulation_mean_raw_cross_product": -0.24423876658079,
+          "simulation_sd": 0.354772959519852,
+          "simulation_mean_diagnostic_z": 0.334935460317533,
+          "observed_z_against_exact_mean": -1.16809185962913,
+          "two_sided_exceedances": 1200,
+          "marginal_p_plus_one": 0.240151969606079
+        },
+        {
+          "lag": 3,
+          "analytic_expected_raw_cross_product": -0.225668545713846,
+          "observed_raw_cross_product": -0.740393697168159,
+          "simulation_mean_raw_cross_product": -0.230199118984609,
+          "simulation_sd": 0.350798514455818,
+          "simulation_mean_diagnostic_z": -0.913230515638888,
+          "observed_z_against_exact_mean": -1.46729569893643,
+          "two_sided_exceedances": 738,
+          "marginal_p_plus_one": 0.147770445910818
+        }
+      ]
+    }
+  ],
+  "execution": {
+    "language": "C++17",
+    "compiler": "g++ -O3 -std=c++17",
+    "replicates": 15000,
+    "total_across_three_block_lengths": 15000,
+    "elapsed_seconds": 13.74,
+    "independent_sieve_validation": "Python segmented sieve returned the same count and endpoints.",
+    "source": "analysis/experiment_24_aligned_covariance_replication.cpp",
+    "protocol": "research/experiment_24_protocol.md",
+    "note": "Simulation results were generated by a local C++17 implementation of the protocol and archived. The committed C++ source records the same algorithm, parameters and seeds; no GitHub Actions execution was used."
+  },
+  "interpretation": "No marginal test is significant; the smallest p is 0.09018 and Bonferroni adjusted p is 0.81164. Results are compatible with the specified finite conditioned random-sieve model for this second non-overlapping interval."
+}
