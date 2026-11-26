@@ -1,0 +1,26 @@
+{
+  "experiment": "23B held-out aligned block residual covariance test",
+  "interval": {"start_inclusive": 100171, "end_exclusive": 200341, "length": 100170},
+  "prime_data": {"count": 8407, "first": 100183, "last": 200329},
+  "cutoff": {"z": 613, "theta": 0.08693500077318561, "theta_times_log_X": 1.0010247160915315, "next_prime": 617, "next_theta_times_log_X_below_one": true, "maximum_thinning_probability": 0.9989763328766421},
+  "simulation": {"replicates_per_block_length": 5000, "seeds": {"b10": 2026112610, "b30": 2026112630, "b210": 2026112810}, "prng": "std::mt19937_64", "compiler": "g++ -O3 -std=c++17"},
+  "global_test": {"observed_max_absolute_standardized_statistic": 0.979306879356, "null_exceedances": 4826, "plus_one_p_value": 0.965206958608},
+  "results": [
+    {"b":10,"blocks":10017,"lags":[
+      {"lag":1,"observed_T":0.000093081591777,"simulation_mean":0.0000539317107335,"simulation_sd":0.00460866476705,"z":0.00849484243769,"two_sided_exceedances":4972,"plus_one_p":0.994401119776},
+      {"lag":2,"observed_T":-0.00239340473741,"simulation_mean":0.0000309856173785,"simulation_sd":0.00473170358979,"z":-0.512371561063,"two_sided_exceedances":3068,"plus_one_p":0.613677264547},
+      {"lag":3,"observed_T":-0.00316940975417,"simulation_mean":0.0000629611789729,"simulation_sd":0.00548606588633,"z":-0.589196520808,"two_sided_exceedances":2798,"plus_one_p":0.559688062388}
+    ]},
+    {"b":30,"blocks":3339,"lags":[
+      {"lag":1,"observed_T":0.00572188440012,"simulation_mean":-0.0001906198992,"simulation_sd":0.0219827948747,"z":0.26896053632,"two_sided_exceedances":3938,"plus_one_p":0.787642471506},
+      {"lag":2,"observed_T":-0.0222798633293,"simulation_mean":-0.00000607619734778,"simulation_sd":0.0227444405849,"z":-0.979306879356,"two_sided_exceedances":1653,"plus_one_p":0.330733853229},
+      {"lag":3,"observed_T":0.000920654376407,"simulation_mean":-0.000198114640369,"simulation_sd":0.0220319168775,"z":0.0507794679417,"two_sided_exceedances":4798,"plus_one_p":0.959608078384}
+    ]},
+    {"b":210,"blocks":477,"lags":[
+      {"lag":1,"observed_T":0.259237393087,"simulation_mean":-0.00170433857573,"simulation_sd":0.344574610115,"z":0.757286590488,"two_sided_exceedances":2255,"plus_one_p":0.451109778044},
+      {"lag":2,"observed_T":-0.0920388775299,"simulation_mean":-0.000324329472207,"simulation_sd":0.348539254486,"z":-0.263139795238,"two_sided_exceedances":3925,"plus_one_p":0.785042991402},
+      {"lag":3,"observed_T":-0.230105081109,"simulation_mean":-0.00282129468144,"simulation_sd":0.346063158903,"z":-0.656769669295,"two_sided_exceedances":2555,"plus_one_p":0.511097780444}
+    ]}
+  ],
+  "interpretation": "No departure was detected by the preregistered nine-statistic covariance test. This is not evidence that the model is true or that primes are independent."
+}
