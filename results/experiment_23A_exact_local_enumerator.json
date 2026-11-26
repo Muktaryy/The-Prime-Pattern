@@ -1,0 +1,16 @@
+{
+  "test": "23A exact per-prime forbidden-residue enumeration",
+  "cutoff": 31,
+  "checks": [
+    {"b":10,"n":1000001,"m":1000013,"d":12,"survival_probability":"36450/176111"},
+    {"b":10,"n":1000001,"m":1000021,"d":20,"survival_probability":"18225/176111"},
+    {"b":10,"n":1000031,"m":1000033,"d":2,"survival_probability":"18225/176111"},
+    {"b":30,"n":1000021,"m":1000057,"d":36,"survival_probability":"54675/176111"},
+    {"b":30,"n":1000021,"m":1000081,"d":60,"survival_probability":"54675/176111"},
+    {"b":30,"n":1000111,"m":1000117,"d":6,"survival_probability":"54675/176111"},
+    {"b":210,"n":1000021,"m":1000241,"d":220,"survival_probability":"85050/176111"},
+    {"b":210,"n":1000021,"m":1000441,"d":420,"survival_probability":"76545/176111"},
+    {"b":210,"n":1000651,"m":1000661,"d":10,"survival_probability":"76545/176111"}
+  ],
+  "result": "All nine exact per-prime enumeration products agree with the independently factored local-probability products."
+}
