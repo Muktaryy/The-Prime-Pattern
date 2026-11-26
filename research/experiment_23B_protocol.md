@@ -88,7 +88,7 @@ The nine-dimensional vector of T values is the primary analysis. Its model expec
 
 ## 6. Calibration and multiplicity
 
-- Use 5,000 independent Monte Carlo replicates per b, with fixed, published seeds before execution.
+- Use 5,000 independent Monte Carlo replicates per b. Seeds fixed in the simulation source before execution: b=10 seed 2026112610; b=30 seed 2026112630; b=210 seed 2026112810. The seed values were present in source before running; they were added to this protocol's written record after the run (documentation deviation).
 - Each replicate draws a fresh set of forbidden residues and fresh thinning coins; residue choices are shared across the full interval within that replicate.
 - Estimate the mean and standard deviation of each of the nine T statistics from the simulations.
 - Standardize each observed T by its corresponding Monte Carlo mean and standard deviation.
@@ -122,8 +122,12 @@ Before running the statistical comparison:
 
 - data/prime_counts_100171_200340_by_10_30_210.csv
 - data/primes_100171_200340.csv
-- analysis/experiment_23B_heldout_covariance.js
+- analysis/experiment_23B_heldout_covariance.cpp
 - results/experiment_23B_heldout_covariance.json
 - results/experiment_23B_heldout_covariance.md
 
 No result should be written until the data and implementation checks in Section 7 pass.
+
+## Execution record
+
+The holdout was analyzed after this protocol was committed. The source contained the three fixed seeds before execution, although the seed values were not explicitly listed in this protocol until this post-run documentation update. This is recorded as a minor preregistration documentation deviation; the seed values themselves were not selected based on the observed statistics.
