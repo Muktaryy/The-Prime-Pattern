@@ -116,4 +116,38 @@ On 2026-11-26 the C++ source was revised after the independent audit. The revise
 - reports the simulated-mean diagnostic in Monte Carlo standard-error units;
 - uses nine marginal Monte Carlo p-values with Bonferroni adjustment and reports no joint maximum-statistic p-value.
 
-**The revised source has been committed, but it has not yet been recompiled and rerun in this execution environment.** Therefore the numerical results above remain the original run's per-b descriptive comparisons; they are not results from the corrected calibration. The original global p-value remains withdrawn. Do not treat the corrected p-values or covariance diagnostics as available until the revised source is executed and its new JSON output is archived.
+The corrected rerun has now been completed locally and archived below. The earlier global p-value remains withdrawn.
+
+
+## 9. Corrected rerun (2026-11-26)
+
+A local C++17 build of the corrected implementation (same algorithm, parameters and assertions as the committed source) was compiled and run: 5,000 replicates for each b. The run completed successfully.
+
+Validation:
+- Prime count: 8,407; first prime 100,183; last prime 200,329.
+- Block totals for b=10,30,210 each equal 8,407.
+- Alignment, active-offset, pair-difference and thinning-probability checks passed.
+- \(\Theta_{613}=0.0869350007731856\), and \(\Theta_{613}\log(100171)=1.0010247161>1\).
+- The simulated means were all within 0.83 Monte Carlo standard errors of their exact analytic expectations. This supports the covariance calculation and implementation for the tested finite model.
+
+| b | Lag | Analytic expectation K | Observed raw cross-product S | Simulated mean | z=(S−K)/SD | Marginal p |
+|---:|---:|---:|---:|---:|---:|---:|
+| 10 | 1 | -0.078287 | -0.078194 | -0.078233 | 0.020 | 0.9844 |
+| 10 | 2 | -0.053276 | -0.055669 | -0.053245 | -0.506 | 0.6179 |
+| 10 | 3 | 0.062549 | 0.059380 | 0.062612 | -0.578 | 0.5673 |
+| 30 | 1 | -0.125588 | -0.119866 | -0.125778 | 0.260 | 0.7944 |
+| 30 | 2 | -0.038373 | -0.060653 | -0.038379 | -0.980 | 0.3305 |
+| 30 | 3 | -0.084642 | -0.083721 | -0.084840 | 0.042 | 0.9670 |
+| 210 | 1 | -0.999971 | -0.740734 | -1.001675 | 0.752 | 0.4535 |
+| 210 | 2 | -0.268165 | -0.360204 | -0.268490 | -0.264 | 0.7838 |
+| 210 | 3 | -0.246080 | -0.476185 | -0.248901 | -0.665 | 0.5057 |
+
+The smallest marginal p-value is 0.3305 (b=30, lag 2). Bonferroni-adjusted p-value across all nine comparisons is 1.0. No joint maximum-statistic p-value is reported.
+
+### Interpretation
+
+The corrected rerun finds no statistically significant departure from the specified z=613 finite conditioned random-sieve model for any of the nine statistics. Crucially, the simulated means agree closely with the analytic expectations, so the covariance calculation is now being checked rather than canceled out of the comparison.
+
+This remains a compatibility result for one interval, three block lengths, three lags and this particular finite model. It is not proof of the model, independence, or the full Hardy–Littlewood conjecture. The b=210 estimates are visibly noisier because there are only 477 blocks. No formal power analysis was performed.
+
+The original global p-value 0.9652 remains withdrawn. The corrected numerical output is in results/experiment_23B_heldout_covariance.json.
