@@ -131,3 +131,30 @@ No result should be written until the data and implementation checks in Section 
 ## Execution record
 
 The holdout was analyzed after this protocol was committed. The source contained the three fixed seeds before execution, although the seed values were not explicitly listed in this protocol until this post-run documentation update. This is recorded as a minor preregistration documentation deviation; the seed values themselves were not selected based on the observed statistics.
+
+
+## Post-audit correction plan (2026-11-26)
+
+The original global maximum calibration is withdrawn. The original implementation generated independent simulations for each b and did not reproduce the dependence between the nine observed statistics computed from the same nested prime-count sequence.
+
+The corrected analysis will use nine marginal Monte Carlo tests with Bonferroni family-wise error control. For each (b,k), define the raw residual cross-product average
+\[
+S_{b,k}=\frac1{M_b-k}\sum_i e_i^{(b)}e_{i+k}^{(b)}.
+\]
+Its exact finite-model expectation is
+\[
+K_{b,k}=\frac1{M_b-k}\sum_i
+\operatorname{Cov}_{model}(C_i^{(b)},C_{i+k}^{(b)}).
+\]
+The corrected centered statistic is S-K. The analytic K will no longer be subtracted from both observed and simulated statistics and then canceled by simulation-mean centering. The simulation will report K, observed S, simulated mean of S, Monte Carlo standard error of that mean, and the standardized discrepancy (S_obs-K)/SD(S_sim). It will also report the simulation-mean diagnostic (mean(S_sim)-K)/[SD(S_sim)/sqrt(R)].
+
+Marginal two-sided Monte Carlo p-values will be calculated by comparing |S_sim-K| with |S_obs-K|. The nine marginal p-values will be adjusted by Bonferroni; no joint max-statistic p-value will be reported. The simulation streams may remain independent across b because Bonferroni does not require a joint coupling.
+
+The corrected implementation must assert:
+- N is divisible by each b;
+- (LO-1) is divisible by each b;
+- every thinning probability is in (0,1];
+- the observed prime count is 8,407 and each block-count total agrees;
+- all pair-difference indices are within the precomputed finite-product array.
+
+The original protocol's max-statistic procedure is superseded by this post-audit correction. This is a documented amendment made after the initial results and must not be described as preregistered.
