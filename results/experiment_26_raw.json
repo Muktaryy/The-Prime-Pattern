@@ -1,0 +1,22 @@
+{
+  "experiment": "26",
+  "interval": {"start_inclusive": 720511, "end_exclusive": 2820511, "length": 2100000},
+  "alignment": {"modulus": 210, "start_mod_210": 1, "blocks": 10000, "active_offsets": 48},
+  "prime_validation": {"count": 146713, "first": 720527, "last": 2820509, "independent_segmented_sieve_confirmed": true},
+  "model": {"type": "finite conditioned random sieve", "cutoff_z": 613, "theta_613": 0.08693500077318561, "max_thinning_probability": 0.8534, "replicates": 5000, "seed": 20261129210},
+  "primary_statistic": {
+    "block_length": 210,
+    "lag": 3,
+    "pairs": 9997,
+    "observed_S": -0.25977498465126792,
+    "analytic_expectation_K": -0.17017082701158381,
+    "simulation_mean": -0.17011612108840568,
+    "simulation_sd": 0.07448264787417459,
+    "simulation_mean_mcse": 0.0010533437078511728,
+    "observed_standardized_discrepancy": -1.203020571866009,
+    "two_sided_exceedances": 1126,
+    "monte_carlo_p_plus_one": 0.22535492901419715,
+    "monte_carlo_tail_probability_95_percent_interval": [0.21368482186758836, 0.23703685717112172]
+  },
+  "interpretation": "The pre-specified b=210 lag-3 statistic is not unusual under the fixed z=613 finite conditioned random-sieve model in this independent interval. Experiment 25's discrepancy did not replicate here. This does not prove the model is true."
+}
