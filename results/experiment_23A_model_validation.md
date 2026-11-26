@@ -51,7 +51,7 @@ All nine lag-covariance discrepancies are within 1.76 batch Monte Carlo standard
 2. The finite model includes only primes p≤31 in its random sieve. It must not be confused with the infinite singular series or the full Hardy–Littlewood prediction.
 3. Pair checks and block covariances are not independent diagnostics: they are calculated from the same simulated replications. Their role is implementation verification.
 4. Eight blocks per replication are enough for a small correctness test, not for estimating long-range behavior or statistical power.
-5. The model has now passed its first implementation check. Before using it as a null for actual prime data, we should add independent unit tests for the finite-product factorization and compare a second implementation (for example, a small exact enumerator on a toy modulus) against this simulation.
+5. A second, independent exact check was added: for nine selected pairs, the code enumerates every possible forbidden residue separately for each prime p≤31, multiplies the exact rational survival probabilities, and compares them with the factored local formula. All nine exact rational products agree. See analysis/experiment_23_exact_local_enumerator.js and results/experiment_23A_exact_local_enumerator.json.
 
 ## Files
 
@@ -60,3 +60,7 @@ All nine lag-covariance discrepancies are within 1.76 batch Monte Carlo standard
 - research/experiment_23_aligned_random_sieve_model.md
 
 No comparison with observed prime counts was performed.
+
+## Additional exact cross-check
+
+The per-prime residue enumerator independently checks the local survival factors without random sampling. For each prime it counts the forbidden-residue choices that leave both selected integers alive, then multiplies the resulting rational probabilities using BigInt arithmetic. All nine selected-pair products match the direct factorization exactly.
