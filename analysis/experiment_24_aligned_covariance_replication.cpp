@@ -6,6 +6,7 @@
 #include <numeric>
 #include <random>
 #include <sstream>
+#include <string>
 #include <vector>
 using namespace std;
 const int LO=200341, HI=300511, N=HI-LO, Z=613, REPS=5000;
