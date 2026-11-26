@@ -139,5 +139,8 @@
   "global_test_note": "The original independent-per-b maximum-statistic calibration does not reproduce the joint dependence of the nine observed statistics. Do not interpret global_p_plus_one as a valid global p-value.",
   "bonferroni_adjusted_min_marginal_p": 1,
   "audit_review": "research/gemini_audit_experiment_23B_review.md",
-  "covariance_diagnostic_note": "The same analytic covariance term is subtracted from observed and simulated statistics, then cancels when centered by simulation mean. Individual Monte Carlo p-values compare raw cross-product statistics with their b-specific simulated distributions; they do not validate the analytic covariance formula."
+  "covariance_diagnostic_note": "The same analytic covariance term is subtracted from observed and simulated statistics, then cancels when centered by simulation mean. Individual Monte Carlo p-values compare raw cross-product statistics with their b-specific simulated distributions; they do not validate the analytic covariance formula.",
+  "corrected_implementation_status": "committed_pending_execution",
+  "corrected_source": "analysis/experiment_23B_heldout_covariance.cpp",
+  "note": "Corrected C++ source now tests observed and simulated raw residual cross-products against the exact analytic covariance expectation, reports simulation-mean diagnostics, adds data/alignment/thinning assertions, and uses Bonferroni across nine marginal tests. It has not yet been recompiled or rerun; all numerical fields in this JSON remain from the original run. The old joint maximum p-value is withdrawn."
 }
