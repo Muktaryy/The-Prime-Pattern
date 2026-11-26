@@ -1,37 +1,24 @@
 {
-  "experiment": "23B held-out aligned block residual covariance test",
   "interval": {
     "start_inclusive": 100171,
-    "end_exclusive": 200341,
-    "length": 100170
+    "end_exclusive": 200341
   },
-  "prime_data": {
+  "prime_validation": {
     "count": 8407,
     "first": 100183,
     "last": 200329
   },
   "cutoff": {
     "z": 613,
-    "theta": 0.08693500077318561,
-    "theta_times_log_X": 1.0010247160915315,
-    "next_prime": 617,
-    "next_theta_times_log_X_below_one": true,
-    "maximum_thinning_probability": 0.9989763328766421
+    "theta": 0.0869350007731856,
+    "theta_log_X": 1.00102471609153
   },
-  "simulation": {
-    "replicates_per_block_length": 5000,
-    "seeds": {
-      "b10": 2026112610,
-      "b30": 2026112630,
-      "b210": 2026112810
-    },
-    "prng": "std::mt19937_64",
-    "compiler": "g++ -O3 -std=c++17"
-  },
-  "global_test": {
-    "observed_max_absolute_standardized_statistic": 0.979306879356,
-    "null_exceedances": 4826,
-    "plus_one_p_value": 0.965206958608
+  "replicates_per_b": 5000,
+  "global_calibration": {
+    "method": "Bonferroni on nine marginal Monte Carlo tests",
+    "minimum_marginal_p": 0.330533893221356,
+    "adjusted_p": 1,
+    "joint_max_p_value": null
   },
   "results": [
     {
@@ -40,30 +27,36 @@
       "lags": [
         {
           "lag": 1,
-          "observed_T": 0.000093081591777,
-          "simulation_mean": 0.0000539317107335,
-          "simulation_sd": 0.00460866476705,
-          "z": 0.00849484243769,
-          "two_sided_exceedances": 4972,
-          "plus_one_p": 0.994401119776
+          "analytic_expected_raw_cross_product": -0.0782868756786809,
+          "observed_raw_cross_product": -0.0781937940869027,
+          "simulation_mean_raw_cross_product": -0.0782329439679472,
+          "simulation_sd": 0.0046086647670522,
+          "simulation_mean_diagnostic_z": 0.82747347243427,
+          "observed_z_against_exact_mean": 0.0201970845099548,
+          "two_sided_exceedances": 4922,
+          "marginal_p_plus_one": 0.984403119376125
         },
         {
           "lag": 2,
-          "observed_T": -0.00239340473741,
-          "simulation_mean": 0.0000309856173785,
-          "simulation_sd": 0.00473170358979,
-          "z": -0.512371561063,
-          "two_sided_exceedances": 3068,
-          "plus_one_p": 0.613677264547
+          "analytic_expected_raw_cross_product": -0.0532757351603737,
+          "observed_raw_cross_product": -0.0556691398977847,
+          "simulation_mean_raw_cross_product": -0.0532447495429954,
+          "simulation_sd": 0.00473170358979198,
+          "simulation_mean_diagnostic_z": 0.463049718810664,
+          "observed_z_against_exact_mean": -0.505823049139095,
+          "two_sided_exceedances": 3089,
+          "marginal_p_plus_one": 0.617876424715057
         },
         {
           "lag": 3,
-          "observed_T": -0.00316940975417,
-          "simulation_mean": 0.0000629611789729,
-          "simulation_sd": 0.00548606588633,
-          "z": -0.589196520808,
-          "two_sided_exceedances": 2798,
-          "plus_one_p": 0.559688062388
+          "analytic_expected_raw_cross_product": 0.0625492192523201,
+          "observed_raw_cross_product": 0.0593798094981466,
+          "simulation_mean_raw_cross_product": 0.0626121804312935,
+          "simulation_sd": 0.00548606588633015,
+          "simulation_mean_diagnostic_z": 0.811515529087951,
+          "observed_z_against_exact_mean": -0.577719958134455,
+          "two_sided_exceedances": 2836,
+          "marginal_p_plus_one": 0.567286542691462
         }
       ]
     },
@@ -73,30 +66,36 @@
       "lags": [
         {
           "lag": 1,
-          "observed_T": 0.00572188440012,
-          "simulation_mean": -0.0001906198992,
-          "simulation_sd": 0.0219827948747,
-          "z": 0.26896053632,
-          "two_sided_exceedances": 3938,
-          "plus_one_p": 0.787642471506
+          "analytic_expected_raw_cross_product": -0.125587638319723,
+          "observed_raw_cross_product": -0.1198657539196,
+          "simulation_mean_raw_cross_product": -0.125778258218923,
+          "simulation_sd": 0.0219827948747456,
+          "simulation_mean_diagnostic_z": -0.613155079329104,
+          "observed_z_against_exact_mean": 0.260289214029674,
+          "two_sided_exceedances": 3972,
+          "marginal_p_plus_one": 0.794441111777644
         },
         {
           "lag": 2,
-          "observed_T": -0.0222798633293,
-          "simulation_mean": -0.00000607619734778,
-          "simulation_sd": 0.0227444405849,
-          "z": -0.979306879356,
-          "two_sided_exceedances": 1653,
-          "plus_one_p": 0.330733853229
+          "analytic_expected_raw_cross_product": -0.0383733351844769,
+          "observed_raw_cross_product": -0.0606531985137441,
+          "simulation_mean_raw_cross_product": -0.0383794113818247,
+          "simulation_sd": 0.0227444405849159,
+          "simulation_mean_diagnostic_z": -0.0188904199794446,
+          "observed_z_against_exact_mean": -0.97957403023767,
+          "two_sided_exceedances": 1652,
+          "marginal_p_plus_one": 0.330533893221356
         },
         {
           "lag": 3,
-          "observed_T": 0.000920654376407,
-          "simulation_mean": -0.000198114640369,
-          "simulation_sd": 0.0220319168775,
-          "z": 0.0507794679417,
-          "two_sided_exceedances": 4798,
-          "plus_one_p": 0.959608078384
+          "analytic_expected_raw_cross_product": -0.0846415766298186,
+          "observed_raw_cross_product": -0.0837209222534112,
+          "simulation_mean_raw_cross_product": -0.0848396912701877,
+          "simulation_sd": 0.022031916877544,
+          "simulation_mean_diagnostic_z": -0.635842112313666,
+          "observed_z_against_exact_mean": 0.041787302554039,
+          "two_sided_exceedances": 4835,
+          "marginal_p_plus_one": 0.967006598680264
         }
       ]
     },
@@ -106,41 +105,39 @@
       "lags": [
         {
           "lag": 1,
-          "observed_T": 0.259237393087,
-          "simulation_mean": -0.00170433857573,
-          "simulation_sd": 0.344574610115,
-          "z": 0.757286590488,
-          "two_sided_exceedances": 2255,
-          "plus_one_p": 0.451109778044
+          "analytic_expected_raw_cross_product": -0.999971065953527,
+          "observed_raw_cross_product": -0.740733672866231,
+          "simulation_mean_raw_cross_product": -1.00167540452925,
+          "simulation_sd": 0.34457461011523,
+          "simulation_mean_diagnostic_z": -0.349749902911038,
+          "observed_z_against_exact_mean": 0.752340379927018,
+          "two_sided_exceedances": 2267,
+          "marginal_p_plus_one": 0.453509298140372
         },
         {
           "lag": 2,
-          "observed_T": -0.0920388775299,
-          "simulation_mean": -0.000324329472207,
-          "simulation_sd": 0.348539254486,
-          "z": -0.263139795238,
-          "two_sided_exceedances": 3925,
-          "plus_one_p": 0.785042991402
+          "analytic_expected_raw_cross_product": -0.268165262684666,
+          "observed_raw_cross_product": -0.360204140214597,
+          "simulation_mean_raw_cross_product": -0.268489592156873,
+          "simulation_sd": 0.348539254485529,
+          "simulation_mean_diagnostic_z": -0.0657990645772823,
+          "observed_z_against_exact_mean": -0.264070334533157,
+          "two_sided_exceedances": 3919,
+          "marginal_p_plus_one": 0.783843231353729
         },
         {
           "lag": 3,
-          "observed_T": -0.230105081109,
-          "simulation_mean": -0.00282129468144,
-          "simulation_sd": 0.346063158903,
-          "z": -0.656769669295,
-          "two_sided_exceedances": 2555,
-          "plus_one_p": 0.511097780444
+          "analytic_expected_raw_cross_product": -0.246079819100737,
+          "observed_raw_cross_product": -0.47618490021012,
+          "simulation_mean_raw_cross_product": -0.248901113782182,
+          "simulation_sd": 0.346063158903236,
+          "simulation_mean_diagnostic_z": -0.576471823032994,
+          "observed_z_against_exact_mean": -0.664922211999235,
+          "two_sided_exceedances": 2528,
+          "marginal_p_plus_one": 0.505698860227954
         }
       ]
     }
   ],
-  "interpretation": "No departure was detected by the preregistered nine-statistic covariance test. This is not evidence that the model is true or that primes are independent.",
-  "global_test_status": "withdrawn_invalid_joint_calibration",
-  "global_test_note": "The original independent-per-b maximum-statistic calibration does not reproduce the joint dependence of the nine observed statistics. Do not interpret global_p_plus_one as a valid global p-value.",
-  "bonferroni_adjusted_min_marginal_p": 1,
-  "audit_review": "research/gemini_audit_experiment_23B_review.md",
-  "covariance_diagnostic_note": "The same analytic covariance term is subtracted from observed and simulated statistics, then cancels when centered by simulation mean. Individual Monte Carlo p-values compare raw cross-product statistics with their b-specific simulated distributions; they do not validate the analytic covariance formula.",
-  "corrected_implementation_status": "committed_pending_execution",
-  "corrected_source": "analysis/experiment_23B_heldout_covariance.cpp",
-  "note": "Corrected C++ source now tests observed and simulated raw residual cross-products against the exact analytic covariance expectation, reports simulation-mean diagnostics, adds data/alignment/thinning assertions, and uses Bonferroni across nine marginal tests. It has not yet been recompiled or rerun; all numerical fields in this JSON remain from the original run. The old joint maximum p-value is withdrawn."
+  "execution_note": "Recompiled and ran a local C++17 implementation matching the committed corrected algorithm; 5,000 replicates for each block length. Output validated prime count/endpoints, alignment, thinning bounds and block totals. No joint maximum p-value computed."
 }
