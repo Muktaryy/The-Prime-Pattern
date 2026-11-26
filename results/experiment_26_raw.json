@@ -3,7 +3,7 @@
   "interval": {"start_inclusive": 720511, "end_exclusive": 2820511, "length": 2100000},
   "alignment": {"modulus": 210, "start_mod_210": 1, "blocks": 10000, "active_offsets": 48},
   "prime_validation": {"count": 146713, "first": 720527, "last": 2820509, "independent_segmented_sieve_confirmed": true},
-  "model": {"type": "finite conditioned random sieve", "cutoff_z": 613, "theta_613": 0.08693500077318561, "max_thinning_probability": 0.8534, "replicates": 5000, "seed": 20261129210},
+  "model": {"type": "finite conditioned random sieve", "cutoff_z": 613, "theta_613": 0.08693500077318561, "max_thinning_probability": 0.8528387523260093, "replicates": 5000, "seed": 20261129210},
   "primary_statistic": {
     "block_length": 210,
     "lag": 3,
