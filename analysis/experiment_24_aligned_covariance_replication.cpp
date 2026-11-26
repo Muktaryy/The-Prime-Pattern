@@ -5,6 +5,7 @@
 #include <iostream>
 #include <numeric>
 #include <random>
+#include <sstream>
 #include <vector>
 using namespace std;
 const int LO=200341, HI=300511, N=HI-LO, Z=613, REPS=5000;
@@ -34,7 +35,7 @@ int main(){
   for(int rep=0;rep<REPS;rep++){vector<unsigned char>alive(N,1);for(int j=0;j<N;j++)if(gcdint(LO+j,b)!=1)alive[j]=0;for(int p:primes)if(b%p){uniform_int_distribution<int>D(0,p-1);int a=D(rng),st=(a-LO%p+p)%p;for(int j=st;j<N;j+=p)alive[j]=0;}vector<int> counts(M,0);for(int j=0;j<N;j++)if(alive[j]){int n=LO+j;double q=1/(theta*log((double)n));if(!(q>0&&q<=1))return 17;if(U(rng)<q)counts[j/b]++;}for(int k=1;k<=3;k++){double s=0;for(int i=0;i<M-k;i++)s+=(counts[i]-mu[i])*(counts[i+k]-mu[i+k]);sim[k-1].push_back(s/(M-k));}}
   string chunk="{\"b\":"+to_string(b)+",\"blocks\":"+to_string(M)+",\"lags\":[";
   for(int k=1;k<=3;k++){auto&v=sim[k-1];double mean=accumulate(v.begin(),v.end(),0.0)/REPS,ss=0;for(double x:v)ss+=(x-mean)*(x-mean);double sd=sqrt(ss/(REPS-1)),zm=(mean-K[k-1])/(sd/sqrt((double)REPS)),zo=(Sobs[k-1]-K[k-1])/sd;int ex=0;for(double x:v)if(abs(x-K[k-1])>=abs(Sobs[k-1]-K[k-1]))ex++;double p=(1.0+ex)/(REPS+1.0);allp.push_back(p);if(k>1)chunk+=",";chunk+="{\"lag\":"+to_string(k)+",\"analytic_expected_raw_cross_product\":"+to_string(K[k-1])+",\"observed_raw_cross_product\":"+to_string(Sobs[k-1])+",\"simulation_mean_raw_cross_product\":"+to_string(mean)+",\"simulation_sd\":"+to_string(sd)+",\"simulation_mean_diagnostic_z\":"+to_string(zm)+",\"observed_z_against_exact_mean\":"+to_string(zo)+",\"two_sided_exceedances\":"+to_string(ex)+",\"marginal_p_plus_one\":"+to_string(p)+"}";}
-  chunk+="]}";chunks.push_back(chunk);
+  chunkStream<<"]}";chunks.push_back(chunkStream.str());
  }
  double minp=*min_element(allp.begin(),allp.end());cout<<"\"global_calibration\":{\"method\":\"Bonferroni on nine marginal Monte Carlo tests\",\"minimum_marginal_p\":"<<minp<<",\"adjusted_p\":"<<min(1.0,9*minp)<<",\"joint_max_p_value\":null},\n\"results\":[";for(size_t i=0;i<chunks.size();i++){if(i)cout<<",";cout<<chunks[i];}cout<<"]}\n";
 }
