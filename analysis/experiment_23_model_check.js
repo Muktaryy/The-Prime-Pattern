@@ -42,8 +42,8 @@ for (const b of CONFIGS) {
   if (Z < Math.max(...PRIMES.filter(p=>b%p===0))) throw new Error('cutoff too small');
   if (THETA*Math.log(X) < 1) throw new Error('thinning probability exceeds one');
   const R = activeOffsets(b);
-  if (R.length !== phi(b)) throw new Error(\`active-slot count mismatch for b=\${b}\`);
-  if (BASE % b !== 1 % b) throw new Error(\`block alignment mismatch for b=\${b}\`);
+  if (R.length !== phi(b)) throw new Error(`active-slot count mismatch for b=${b}`);
+  if (BASE % b !== 1 % b) throw new Error(`block alignment mismatch for b=${b}`);
 
   const sums = Array(BLOCKS).fill(0);
   const sumsSq = Array(BLOCKS).fill(0);
